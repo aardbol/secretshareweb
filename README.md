@@ -9,6 +9,7 @@ This is a web frontend for the secretshare API
 # Requirements for running
 * Secretshare API backend (https://github.com/aardbol/secretshare)
 * A-grade TLS encryption
+* FomanticUI for a cross-browser compatible web UI
 
 # Tested with
 Firefox 67  
