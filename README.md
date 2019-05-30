@@ -11,7 +11,7 @@ This is a web frontend for the secretshare API
 * A-grade TLS encryption
 
 # Tested with
-Firefox 67
+Firefox 67  
 Vivaldi 2.5
 
 But it should be compatible with all major browsers. NOT TESTED in IE or Edge yet
