@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 <head>
  <meta charset="utf-8">
@@ -192,8 +193,8 @@
    </div>
   </div>
   <div id="details" class="ui basic segment">
-   <h4 class="ui header">Your secret will expire on:</h4>
-   <p id="expirationTime"></p>
+   <span class="ui grey header">Your secret will expire on: <span id="expirationTime"></span></span>
+   <br><br>
    <a id="extradetails" class="ui brown tertiary button">+ Show extra details</a>
    <div class="ui basic message">
     <h4 class="ui header">This is the encrypted version of your secret that is stored, unreadable to us:</h4>
@@ -318,7 +319,6 @@
         } else {
             bodySegmResultElm.transition("fly down");
         }
-
 
         $('.ui.slider').slider({
             min: 0,
