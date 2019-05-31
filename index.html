@@ -119,6 +119,10 @@
    color: #8a8a8a;
    text-align: center;
   }
+
+  #details .ui.message {
+   clear: both;
+  }
  </style>
  <link rel="stylesheet" href="static/semantic.css">
 </head>
@@ -195,7 +199,7 @@
   <div id="details" class="ui basic segment">
    <span class="ui grey header">Your secret will expire on: <span id="expirationTime"></span></span>
    <br><br>
-   <a id="extradetails" class="ui brown tertiary button">+ Show extra details</a>
+   <a id="extradetails" class="ui right floated tertiary button">+ Show extra details</a>
    <div class="ui basic message">
     <h4 class="ui header">This is the encrypted version of your secret that is stored, unreadable to us:</h4>
     <p id="encText"></p>
