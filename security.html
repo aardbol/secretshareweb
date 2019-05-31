@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="description" content="A secure tool to share sensitive information in encrypted form with third parties">
+ <title>Share a Secret - Short lived encrypted secret sharing - how is this app secure?</title>
+
+ <style>
+  /* latin-ext */
+  @font-face {
+   font-family: 'Lato';
+   font-style: italic;
+   font-weight: 400;
+   src: local('Lato Italic'), local('Lato-Italic'), url(static/fonts/S6u8w4BMUTPHjxsAUi-qJCY.woff2) format('woff2');
+   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+   font-family: 'Lato';
+   font-style: italic;
+   font-weight: 400;
+   src: local('Lato Italic'), local('Lato-Italic'), url(static/fonts/S6u8w4BMUTPHjxsAXC-q.woff2) format('woff2');
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* latin-ext */
+  @font-face {
+   font-family: 'Lato';
+   font-style: italic;
+   font-weight: 700;
+   src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(static/fonts/S6u_w4BMUTPHjxsI5wq_FQft1dw.woff2) format('woff2');
+   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+   font-family: 'Lato';
+   font-style: italic;
+   font-weight: 700;
+   src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(static/fonts/S6u_w4BMUTPHjxsI5wq_Gwft.woff2) format('woff2');
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* latin-ext */
+  @font-face {
+   font-family: 'Lato';
+   font-style: normal;
+   font-weight: 400;
+   src: local('Lato Regular'), local('Lato-Regular'), url(static/fonts/S6uyw4BMUTPHjxAwXjeu.woff2) format('woff2');
+   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+   font-family: 'Lato';
+   font-style: normal;
+   font-weight: 400;
+   src: local('Lato Regular'), local('Lato-Regular'), url(static/fonts/S6uyw4BMUTPHjx4wXg.woff2) format('woff2');
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* latin-ext */
+  @font-face {
+   font-family: 'Lato';
+   font-style: normal;
+   font-weight: 700;
+   src: local('Lato Bold'), local('Lato-Bold'), url(static/fonts/S6u9w4BMUTPHh6UVSwaPGR_p.woff2) format('woff2');
+   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+   font-family: 'Lato';
+   font-style: normal;
+   font-weight: 700;
+   src: local('Lato Bold'), local('Lato-Bold'), url(static/fonts/S6u9w4BMUTPHh6UVSwiPGQ.woff2) format('woff2');
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+   font-family: 'Audiowide';
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+   src: local('Audiowide Regular'), local('Audiowide-Regular'), url(static/fonts/l7gdbjpo0cum0ckerWCdlg_O.woff2) format('woff2');
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  h1 {
+   font-family: 'Audiowide', cursive !important;
+  }
+
+  #bodysegm {
+   padding: 1em;
+   margin-top: 2em;
+  }
+
+  #footer {
+   color: #8a8a8a;
+   text-align: center;
+  }
+ </style>
+ <link rel="stylesheet" href="static/semantic.css">
+</head>
+<body>
+<div id="bodysegm" class="ui text container">
+ <h1>How secure is this app?</h1>
+ <p>
+  Very mooch
+ </p>
+</div>
+<div id="footer" class="ui text container">
+ <i class="copyright outline icon"></i>2019,  https://wheredoi.click
+ {<a href="https://github.com/aardbol/secretshareweb" target="_blank"><i class="fitted github grey icon"></i></a>}<br>
+ <a href="index.html">home</a> | <a href="about.html">about this app</a> | <a href="security.html">how is this app secure?</a>
+</div>
+</body>
+</html>
