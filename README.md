@@ -13,9 +13,11 @@ This is a web frontend for the secretshare API
 
 # Tested with
 Firefox 67  
-Vivaldi 2.5
+Vivaldi 2.5  
+Internet Explorer 11  
+Edge 18
 
-But it should be compatible with all major browsers. NOT TESTED in IE or Edge yet
+But it should be compatible with all major browsers.
 
 # License
 Open source under the EUROPEAN UNION PUBLIC LICENCE v. 1.2 
