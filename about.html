@@ -98,16 +98,54 @@
 </head>
 <body>
 <div id="bodysegm" class="ui text container">
- <h1>About this project</h1>
- <p>
-  This app was created to allow for more secure sharing of sensitive information like passwords via insecure channels
-  such as email communication.
- </p>
+ <h1 class="ui centered header">About this project</h1>
+ This app was created to allow for more secure sharing of sensitive information like passwords via insecure channels
+ such as email or unencrypted websites. It helps reduce potentional data leaks in several ways:
+ <ul class ="ui list">
+  <li class="item">
+   With communication through email for example, <b class="ui large text">it's not easy to see whether that email will be transfered via
+   encrypted tunnels</b> or if it was in the end - and even if it was, if the encryption was properly appied to the tunnel
+   so that there's a guarantee that only sender and recipient can see the contents of the message. This leaves an opening
+   for man-in-the-middle attacks where the sentitive information can be stored or stolen by third parties while on its way
+   to the recipient.
+  </li>
+  <li class="item">
+   <b>Email and other messages are commonly stored for a long time</b>, wether it's still in the sender's sent mailbox, the
+   recipient's inbox, their recycle bin or even in backups that are maintained by the system administrator. As it's not
+   always clear who has access to that mailbox, it's hard to predict what kind of risk it entails (overtime). Access to that
+   mailbox can be gained by the email provider, the system administrator, your colleagues (shared mailbox or replacement),
+   you boss, etc. <b>Plaintext passwords will always remain visible</b>, that's why sharing of secure links that expire after a
+   certain period of time, can completely remove that risk, of course as long as the expiration date is properly chosen.
+  </li>
+  <li class="item">
+   The use of shared links with expiration dates also encourages recipients to use <b>proper means of storing</b> such sensitive
+   information.
+  </li>
+ </ul>
+
+ <h3>Good advice:</h3>
+ I strongly recommend you to communicate to your partners to use password managers to store passwords properly, because
+ sending passwords and other sensitive information securely is one thing, storing them properly is another thing. There are
+ many available, but I strongly recommend KeePass or <a href="https://keepassxc.org/" target="_blank">KeePassXC</a>. For Android check out
+ <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android_nonet" target="_blank">Keepass2Android Offline</a>.
+
+ <h3>Creator</h3>
+ This web app was created by Isaak Malik and is freely available at <a href="https://github.com/aardbol/secretshare">GitHub</a>
+ under open source license EUPL v1.2. <br><br>
+ <a href="EB5BBA9B9C045302FCF1622AB52C8CF8981F584A.asc">GPG key</a>
 </div>
 <div id="footer" class="ui text container">
- <i class="copyright outline icon"></i>2019,  https://wheredoi.click
+ <i class="copyright outline icon"></i>2019, https://wheredoi.click v1.1
  {<a href="https://github.com/aardbol/secretshareweb" target="_blank"><i class="fitted github grey icon"></i></a>}<br>
- <a href="index.html">home</a> | <a href="about.html">about this app</a> | <a href="security.html">how is this app secure?</a>
+ <a href="index.html">home</a> | <a href="about.html">about this app</a> <!--| <a href="security.html">how is this app secure?</a>-->
 </div>
+
+<script src="static/jquery-3.4.1.js"></script>
+<script src="static/semantic.js"></script>
+<script>
+ $(function() {
+     $('h1').transition("zoom in");
+ })
+</script>
 </body>
 </html>

@@ -102,11 +102,12 @@
   #error1,
   #error2,
   #error3,
-  #extradetails + div {
+  #extradetails + div,
+  #resultextradetails + div {
    display: none;
   }
 
-  #encText {
+  #encryptedtext {
    word-wrap: break-word;
   }
 
@@ -158,7 +159,12 @@
    <span class="ui large text" style="white-space: pre-line"></span>
   </div>
   <span class="ui grey text"><i class="stopwatch icon"></i> This secret will expire on <span id="expiretime"></span></span><br>
-  <span class="ui grey text"><i class="eye icon"></i> x time(s) viewed</span>
+  <span class="ui grey text"><i class="eye icon"></i> <span id="totalViews">0</span> time(s) viewed</span>
+  <a id="resultextradetails" class="ui right floated tertiary button">+ Show extra details</a>
+  <div class="ui basic message">
+   <h4 class="ui header">Access records:</h4>
+   <p id="viewrecords"></p>
+  </div>
  </div>
 </div>
 
@@ -203,15 +209,15 @@
    <a id="extradetails" class="ui right floated tertiary button">+ Show extra details</a>
    <div class="ui basic message">
     <h4 class="ui header">This is the encrypted version of your secret that is stored, unreadable to us:</h4>
-    <p id="encText"></p>
+    <p id="encryptedtext"></p>
    </div>
   </div>
  </div>
 </div>
 <div id="footer" class="ui text container">
- <i class="copyright outline icon"></i>2019,  https://wheredoi.click
+ <i class="copyright outline icon"></i>2019, https://wheredoi.click v1.1
  {<a href="https://github.com/aardbol/secretshareweb" target="_blank"><i class="fitted github grey icon"></i></a>}<br>
- <a href="index.html">home</a> | <a href="about.html">about this app</a> | <a href="security.html">how is this app secure?</a>
+ <a href="index.html">home</a> | <a href="about.html">about this app</a> <!--| <a href="security.html">how is this app secure?</a>-->
 </div>
 
 <script src="static/jquery-3.4.1.js"></script>
@@ -326,6 +332,9 @@
             bodySegmResultElm.transition("fly down");
         }
 
+        // Some eyecandy
+        $('h1').transition("zoom in");
+
         $('.ui.slider').slider({
             min: 0,
             max: 7,
@@ -354,7 +363,7 @@
             }
         });
 
-        $('#extradetails').click(function() {
+        $('#extradetails,#resultextradetails').click(function() {
             $(this).next().transition("slide");
             $(this).text($(this).text().replace(
                 $(this).text().indexOf("+") === 0 ? "+" : "-",
@@ -369,6 +378,7 @@
             beforeSend: function(settings) {
                 if (textElm.val().trim().length === 0 ) {
                     textElm.parent().addClass("error");
+                    textElm.transition("shake");
 
                     console.log("API [create secret]: request prevented");
                     return false;
@@ -382,7 +392,7 @@
                 // Now it's added to the request body, notice the encryption key is not sent to the server
                 settings.data = JSON.stringify({data: encData, expires: duration});
                 // Show the user what the encrypted data looks like
-                $('#encText').text(encData);
+                $('#encryptedtext').text(encData);
 
                 return settings;
             },
@@ -441,6 +451,14 @@
                 if (getDecryptionHashFromUrl() !== "" && getDecryptionHashFromUrl().length === 10) {
                     resultsecretElm.show().find('span:first').text(Tea.decrypt(json['data'], getDecryptionHashFromUrl()));
                     $("#expiretime").html("<b>" + (new Date(json['expires'])).toLocaleString() + "</b>");
+                    $('#totalViews').text(json['accessRecords'].length);
+
+                    json['accessRecords'].forEach(function(item) {
+                        $('#viewrecords').append(
+                            "IP: <b>" + item['ip'] + "</b> viewed it on <b>" +
+                            (new Date(item['time']).toLocaleString()) + "</b><br>"
+                        );
+                    });
                 } else {
                     showError("#error1");
                 }
