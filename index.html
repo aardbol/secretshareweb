@@ -103,7 +103,8 @@
   #error2,
   #error3,
   #extradetails + div,
-  #resultextradetails + div {
+  #resultextradetails + div,
+  .red.segment {
    display: none;
   }
 
@@ -166,7 +167,26 @@
    <h4 class="ui header">Access records:</h4>
    <p id="viewrecords"></p>
   </div>
+  <br><br>
+  <div class="ui red segment">
+   <div class="ui red ribbon label"><i class="lightbulb outline large icon"></i></div>
+   <span class="ui red header">Are you planning to store this secret?</span>
+   <div class="ui divider"></div>
+   <span class="ui text">
+    If this secret is a password that you would like to store, it's <b>strongly</b> recommended to store it <b>securely</b>.
+    You can do so by using the open source <a href="https://keepass.info/" target="_blank">KeePass</a> password manager,
+    which allows you to store your passwords and other (related) data encrypted using strong and modern encryption algorithms.
+    A cross-platform alternative to it is <a href="https://keepassxc.org/" target="_blank">KeePassXC</a>.
+    On Android try out <a href="https://play.google.com/store/apps/details?id=keepass2android.keepass2android_nonet"
+                          target="_blank">Keepass2Android Offline</a>. There are also many options for iPhone, but I can't
+    personally recommend one due to not having tested them.
+    <br><br>
+    For a video tutorial, check out these ones: <a href="https://www.youtube.com/watch?v=RvV698aztNs" target="_blank">first</a>,
+    <a href="https://www.youtube.com/watch?v=Dm3Xeo0hIQk" target="_blank">second</a>
+   </span>
+  </div>
  </div>
+
 </div>
 
 <div id="bodysegm" class="ui text container">
@@ -330,7 +350,9 @@
             textElm.val("");
             $('#bodysegm').show();
         } else {
-            bodySegmResultElm.transition("fly down");
+            bodySegmResultElm.transition("fly down", function(){
+                $(this).find('.red.segment').transition("fly left");
+            });
         }
 
         // Some eyecandy
