@@ -401,7 +401,10 @@
             beforeSend: function(settings) {
                 if (textElm.val().trim().length === 0 ) {
                     textElm.parent().addClass("error");
-                    textElm.transition("shake");
+                    textElm.transition({
+                        animation: "shake",
+                        queue: false
+                    });
 
                     console.log("API [create secret]: request prevented");
                     return false;
