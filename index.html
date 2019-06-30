@@ -42,6 +42,10 @@
   #details .ui.message {
    clear: both;
   }
+
+  #linkheader {
+   font-family: Verdana,serif;
+  }
  </style>
 </head>
 
@@ -104,7 +108,10 @@
 <div id="bodysegm" class="ui text container">
  <form class="ui form">
   <div class="field">
-   <h1 class="ui centered header">Enter your secret here</h1>
+   <h1 class="ui centered header">
+    Share a Secret
+    <div class="sub header">Short lived encrypted secret sharing</div>
+   </h1>
    <textarea rows="5"></textarea>
   </div>
   <div class="field">
@@ -130,7 +137,7 @@
 
  <div id="result">
   <div class="ui raised blue segment">
-   <h2 class="ui centered header"><i class="linkify icon"></i>Your secure link:</h2>
+   <h2 id="linkheader" class="ui centered header">Your secure link:</h2>
    <div class="ui action fluid input">
     <input id="url" type="text">
     <button id="copy" class="ui blue right labeled icon button"><i class="copy icon"></i>Copy</button>
