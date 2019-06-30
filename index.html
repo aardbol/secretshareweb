@@ -46,6 +46,11 @@
   #linkheader {
    font-family: Verdana,serif;
   }
+
+  #bottomseparator {
+   max-width: 100px;
+   margin: 0 auto 1em auto;
+  }
  </style>
 </head>
 
@@ -158,6 +163,15 @@
  <i class="copyright outline icon"></i>2019, https://wheredoi.click v1.2
  {<a href="https://github.com/aardbol/secretshareweb" target="_blank"><i class="fitted github grey icon"></i></a>}<br>
  <a href="index.html">home</a> | <a href="about.html">about this app</a> <!--| <a href="security.html">how is this app secure?</a>-->
+</div>
+
+<br>
+<div class="ui text container">
+ <div id="bottomseparator" class="ui divider"></div>
+ <span class="ui grey text">The Share a Secret webapp allows you to share sensitive information <u>securely and privately</u>.
+  Enter the sensitive information in the form above, chose a lifespan for the secret and generate the share link. Only
+  that link contains the decryption key to decipher the secret. It's not stored and never sent to the server. The encrypted
+  secret will be completely removed when the expiration date has been reached. <a href="about.html">Read more</a></span>
 </div>
 
 <script src="static/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="></script>
