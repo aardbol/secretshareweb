@@ -84,6 +84,11 @@ h1 {
    font-family: 'Audiowide', cursive !important;
 }
 
+code {
+   background-color: #fff39e;
+   padding: 1px 2px;
+}
+
 #bodysegm {
    padding: 1em;
 }

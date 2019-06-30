@@ -384,10 +384,19 @@
             onSuccess: function(json) {
                 console.log("API [get secret] success: secret received");
 
-                var resultsecretElm = $('#resultsecret');
+                var $resultsecret = $('#resultsecret');
 
                 if (getDecryptionHashFromUrl() !== "" && getDecryptionHashFromUrl().length === 10) {
-                    resultsecretElm.show().find('span:first').text(Tea.decrypt(json['data'], getDecryptionHashFromUrl()));
+                    $resultsecret.show().find('span:first').text(Tea.decrypt(json['data'], getDecryptionHashFromUrl()));
+                    $resultsecret.find('span:first')
+                        // styling formatting
+                        .html($resultsecret.find('span:first').text()
+                            .replace(/\[hl]/gi, "<code>")
+                            .replace(/\[\/hl]/gi, "</code>")
+                            .replace(/\[b]/gi, "<b>")
+                            .replace(/\[\/b]/gi, "</b>")
+                        );
+
                     $("#expiretime").html("<b>" + (new Date(json['expires'])).toLocaleString() + "</b>");
                     $('#totalViews').text(json['accessRecords'].length);
 
