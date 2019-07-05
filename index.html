@@ -282,6 +282,17 @@
         decryptErrorElm.transition("fade in").find(id).show();
     }
 
+    /**
+     * Convert HTML to text
+     */
+    function stripHTML(dirtyString) {
+        var container = document.createElement('div'),
+            text = document.createTextNode(dirtyString);
+
+        container.appendChild(text);
+        return container.innerHTML; // innerHTML will be a xss safe string
+    }
+
     //---
     // DOM ready
     //--
@@ -422,7 +433,7 @@
                     $resultsecret.show().find('span:first').text(Tea.decrypt(json['data'], getDecryptionHashFromUrl()));
                     $resultsecret.find('span:first')
                         // styling formatting
-                        .html($resultsecret.find('span:first').text()
+                        .html(stripHTML($resultsecret.find('span:first').text())
                             .replace(/\[hl]/gi, "<code>")
                             .replace(/\[\/hl]/gi, "</code>")
                             .replace(/\[b]/gi, "<b>")
